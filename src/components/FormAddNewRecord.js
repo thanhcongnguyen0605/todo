@@ -5,7 +5,7 @@ import { newListState } from "../recoil/listState";
 
 const isNotEmpty = (value) => value.trim() !== "";
 
-const BasicForm = (props) => {
+const FormAddNewRecord = (props) => {
   const {
     value: idValue,
     isValid: idIsValid,
@@ -117,4 +117,4 @@ const BasicForm = (props) => {
   );
 };
 
-export default BasicForm;
+export default FormAddNewRecord;

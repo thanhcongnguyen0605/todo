@@ -5,12 +5,12 @@ import {
   deleteListState,
   newListState,
 } from "./recoil/listState";
-import ExpenseItem from "./ExpenseItem";
+import ExpenseItem from "./UI/ExpenseItem";
 import useInput from "./hooks/use-input";
 
 const isNotEmpty = (value) => value.trim() !== "";
 
-const BasicForm = (props) => {
+const FormAddNewRecord = (props) => {
   const {
     value: titleValue,
     isValid: titleIsValid,
@@ -86,7 +86,7 @@ const NewList = () => {
 
             <button onClick={handleClickDelete(item.id)}>Delete</button>
 
-            <BasicForm id={item.id} />
+            <FormAddNewRecord id={item.id} />
           </li>
         ))}
       </ul>

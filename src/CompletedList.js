@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { completedListState } from "./recoil/listState";
-import ExpenseItem from "./ExpenseItem";
+import ExpenseItem from "./UI/ExpenseItem";
 
 const CompletedList = () => {
   const completedList = useRecoilValue(completedListState);

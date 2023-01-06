@@ -6,12 +6,12 @@ import Overview from "./Overview";
 import { Routes, Route, Link } from "react-router-dom";
 
 import "./App.css";
-import BasicForm from "./components/BasicForm";
+import FormAddNewRecord from "./components/FormAddNewRecord";
 
 const goToAddToDo = () => (window.location = "/addToDo");
 const goToToDoList = () => (window.location = "/toDoList");
 
-const GetAllList = (data) => (
+const ListData = (data) => (
   <div className="title">
     <NewList />
 
@@ -34,17 +34,9 @@ function App() {
           <button onClick={goToAddToDo}>Add New List</button>
 
           <Routes>
-            <Route path="/addToDo" element={<BasicForm />} />
-            <Route path="/toDoList" element={<GetAllList />} />
+            <Route path="/addToDo" element={<FormAddNewRecord />} />
+            <Route path="/toDoList" element={<ListData />} />
           </Routes>
-
-          {/* <BasicForm />
-
-          <div className="title">
-            <NewList />
-
-            <CompletedList />
-          </div> */}
         </div>
       </RecoilRoot>
     </div>
