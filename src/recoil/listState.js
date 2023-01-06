@@ -1,41 +1,8 @@
 import { atom, selector } from "recoil";
 
-const defaultData = [
-  {
-    userId: 1,
-    id: 1,
-    title: "delectus aut autem",
-    completed: false,
-  },
-  {
-    userId: 1,
-    id: 2,
-    title: "quis ut nam facilis et officgit config --global user.emailia qui",
-    completed: false,
-  },
-  {
-    userId: 1,
-    id: 3,
-    title: "fugiat veniam minus",
-    completed: false,
-  },
-  {
-    userId: 1,
-    id: 4,
-    title: "et porro tempora",
-    completed: true,
-  },
-  {
-    userId: 10,
-    id: 200,
-    title: "ipsam aperiam voluptates qui",
-    completed: false,
-  },
-];
-
 const listTodoState = atom({
   key: "listTodo",
-  default: defaultData,
+  default: JSON.parse(window.localStorage.getItem("data")),
 });
 
 export const newListState = selector({
@@ -52,6 +19,8 @@ export const newListState = selector({
       completed: false,
     };
 
+    localStorage.setItem("data", JSON.stringify([newTodo, ...list]));
+
     set(listTodoState, [newTodo, ...list]);
   },
 });
@@ -64,6 +33,14 @@ export const completedListState = selector({
   },
   set: ({ get, set }, id) => {
     const list = get(listTodoState);
+    localStorage.setItem(
+      "data",
+      JSON.stringify(
+        list.map((item) =>
+          item.id === id ? { ...item, completed: true } : item
+        )
+      )
+    );
 
     set(
       listTodoState,
@@ -80,6 +57,10 @@ export const deleteListState = selector({
   },
   set: ({ get, set }, id) => {
     const list = get(listTodoState);
+    const data = list.filter((e) => e.id !== id);
+
+    localStorage.setItem("data", JSON.stringify(data.filter((e) => e !== {})));
+
     set(
       listTodoState,
       list.map((item) => (item.id === id ? {} : item))
@@ -96,6 +77,14 @@ export const editRecordState = selector({
   set: ({ get, set }, newValue) => {
     console.log(123);
     const list = get(listTodoState);
+    localStorage.setItem(
+      "data",
+      JSON.stringify(
+        list.map((item) =>
+          item.id == newValue.id ? { ...item, title: newValue.title } : item
+        )
+      )
+    );
 
     set(
       listTodoState,
