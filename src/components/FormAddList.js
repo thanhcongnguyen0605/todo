@@ -112,9 +112,7 @@ const FormAddList = (props) => {
       </div>
       <div className="form-actions">
         <button
-          // onClick={() => {
-          //   handleClickTodoPage();
-          // }}
+          onClick={(window.location = "/toDoList")}
           disabled={!formIsValid}
         >
           Submit

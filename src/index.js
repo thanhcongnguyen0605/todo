@@ -18,6 +18,7 @@ const getData = async () => {
     if (result.status === 200) {
       console.log("data from AXIOS get", result.data);
       localStorage.setItem("data", JSON.stringify(result.data.slice(0, 50)));
+      return (window.location = "/toDoList");
     } else {
       throw new Error("Can not get data");
     }

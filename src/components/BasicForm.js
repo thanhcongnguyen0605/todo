@@ -58,6 +58,7 @@ const BasicForm = (props) => {
     resetID();
     resetUserId();
     resetTitle();
+    return (window.location = "/toDoList");
   };
 
   const idClasses = idHasError ? "form-control invalid" : "form-control";

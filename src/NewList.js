@@ -61,12 +61,9 @@ const BasicForm = (props) => {
           onChange={titleChangeHandler}
           onBlur={titleBlurHandler}
         />
-        {titleHasError && (
-          <p className="error-text">Please enter a valid title address.</p>
-        )}
       </div>
       <div className="form-actions">
-        <button disabled={!formIsValid}>Submit</button>
+        <button>Edit</button>
       </div>
     </form>
   );
